@@ -1,0 +1,55 @@
+import RPi.GPIO as GPIO
+import time
+
+RPWM_PIN = 18
+LPWM_PIN = 19
+REN_PIN = 23
+LEN_PIN = 24
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(RPWM_PIN, GPIO.OUT)
+GPIO.setup(LPWM_PIN, GPIO.OUT)
+GPIO.setup(REN_PIN, GPIO.OUT)
+GPIO.setup(LEN_PIN, GPIO.OUT)
+
+frequency = 1000
+rpwm = GPIO.PWM(RPWM_PIN, frequency)
+lpwm = GPIO.PWM(LPWM_PIN, frequency)
+rpwm.start(0)
+lpwm.start(0)
+
+A = ""
+
+def set_peltier_state(direction, duty_cycle):
+    # Declare 'A' as a global variable to modify the global A
+    global A 
+    A = direction  # This now modifies the global variable A
+
+    if direction == "cool":
+        GPIO.output(REN_PIN, GPIO.HIGH)
+        GPIO.output(LEN_PIN, GPIO.LOW)
+        rpwm.ChangeDutyCycle(duty_cycle)
+        lpwm.ChangeDutyCycle(0)
+    elif direction == "heat":
+        GPIO.output(REN_PIN, GPIO.LOW)
+        GPIO.output(LEN_PIN, GPIO.HIGH)
+        rpwm.ChangeDutyCycle(0)
+        lpwm.ChangeDutyCycle(duty_cycle)
+    else:
+        GPIO.output(REN_PIN, GPIO.LOW)
+        GPIO.output(LEN_PIN, GPIO.LOW)
+        rpwm.ChangeDutyCycle(0)
+        lpwm.ChangeDutyCycle(0)
+
+try:
+    set_peltier_state("cool", 50)
+    time.sleep(20)
+    # This will now correctly print "cool"
+    print(A) 
+finally:
+    rpwm.stop()
+    lpwm.stop()
+#     GPIO.cleanup()
+
+
+
