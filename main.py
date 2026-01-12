@@ -63,6 +63,16 @@ annotated_image_bgr = cv2.cvtColor(
     cv2.COLOR_RGB2BGR
 )
 
-cv2.imshow("Hand Landmarks", annotated_image_bgr)
+# Resize image to make popup smaller
+scale = 0.4 # adjust this number if needed
+small_image = cv2.resize(
+    annotated_image_bgr,
+    None,
+    fx=scale,
+    fy=scale,
+    interpolation=cv2.INTER_AREA
+)
+
+cv2.imshow("Hand Landmarks", small_image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
