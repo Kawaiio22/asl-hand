@@ -1,0 +1,37 @@
+from adafruit_servokit import ServoKit
+
+# PCA9685 has 16 channels
+kit = ServoKit(channels=16)
+
+# Servo channels you are using
+servos = [0, 1, 2, 3, 4]
+
+# Optional: set pulse width range for micro servos
+for ch in servos:
+    kit.servo[ch].set_pulse_width_range(500, 2500)
+
+# Define positions
+position_A = [30, 30, 30, 30, 30]    # angles for 'a'
+position_B = [120, 120, 120, 120, 120]  # angles for 'b'
+
+def move_servos(positions):
+    for ch, angle in zip(servos, positions):
+        kit.servo[ch].angle = angle
+
+print("Type 'a' or 'b' and press Enter (q to quit)")
+
+while True:
+    key = input(">> ").lower()
+
+    if key == 'a':
+        move_servos(position_A)
+        print("Moved to position A")
+
+    elif key == 'b':
+        move_servos(position_B)
+        print("Moved to position B")
+
+    elif key == 'q':
+        print("Exiting...")
+        break
+
