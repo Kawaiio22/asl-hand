@@ -1,4 +1,4 @@
-# asl-hand
+# ASL-HAND
 Digital Electronics Final Project Kiana Lee
 
 
@@ -44,6 +44,22 @@ The notebook is structured so that all work can be reviewed, followed, and repli
 
 You can access the notebook with the following link: 
 
+## Current Project Scope
+### Implemented / In Progress
+* Servo control testing (PWM and serial-based)
+* PCA9685 setup and testing
+* Raspberry Pi software environment setup
+* CAD evaluation and modification planning
+* MediaPipe-based ASL hand tracking (software-only)
+* ASL letter mapping logic (in development)
+
+### Not Yet Completed
+* Full physical hand assembly
+* Multi-finger coordinated actuation
+* Closed-loop servo feedback
+* Wrist articulation integration
+* Camera-to-hand real-time control
+
 ## System Design Overview
 
 The system is designed as a modular robotics platform consisting of:
@@ -59,8 +75,8 @@ At this stage, emphasis is placed on validating control logic, power constraints
 ### Open Source-CAD Selection
 Rather than designing a robotic hand entirely from scratch, this project uses the Robot Nano Hand as a foundational open-source CAD model.
 
-Robot Nano Hand
-https://robotnanohand.com/
+Robot Nano Hand: https://robotnanohand.com/
+CAD Files: https://www.thingiverse.com/thing:3648120
 
 This decision was made to:
 * Reduce development time
@@ -107,7 +123,6 @@ Planned future CAD work includes:
 * Tendon routing refinements
 * Optional wrist or forearm extension
 
-
 Not all modifications have been implemented yet; this repository documents the design evaluation and planning phase.
 
 ## Component Selection
@@ -144,6 +159,25 @@ Python was selected as the primary programming language due to:
 
 This allows the project to scale from simple servo tests to more complex sequencing logic in future iterations.
 
+## Hardware Architecture
+### Core Components
+* Raspberry Pi 4
+* PCA9685 16-channel PWM servo driver
+* Micro servos (SG90 / MG90S)
+* External 5–6V servo power supply
+
+### Actuation Strategy
+* Tendon-driven finger flexion
+* Elastic return for finger extension
+* Single-actuator flexion for non-critical fingers
+* Higher precision actuation for thumb and index finger
+
+### Power & Communication
+* Raspberry Pi provides logic control only
+* Servos powered externally
+* I2C communication between Pi and PCA9685
+* Separate buses for PWM and serial servos (planned)
+
 ## Software Development
 
 The software component of this project focuses on:
@@ -156,7 +190,35 @@ The software component of this project focuses on:
 The software is developed incrementally, with isolated tests for each subsystem before integration.
 ![Flowchart for Code](https://github.com/user-attachments/assets/e8d0f103-faf9-44c9-be53-3b4039a0f95c)
 
+### Servo Control
+* Python-based control logic
+* Adafruit CircuitPython libraries
+* PWM generation via PCA9685
+* Configurable pulse width ranges for calibration
 
+### ASL Mapping Logic
+* Dictionary-based mapping:
+* ASL Letter → [Servo Angles]
+* Planned neutral/rest state handling
+* Timing control between letters
+
+## Computer Vision (ASL Recognition)
+* MediaPipe Hand Tracking
+* Uses Google MediaPipe Hand Landmarker: https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker
+* Tracks 21 hand landmarks per hand
+* Supports live camera input
+* Python 3.11 virtual environment required
+
+### Current Status
+* MediaPipe successfully installed and running
+* Webcam hand landmark detection operational
+* Landmark data collection and analysis in progress
+
+### Tools Explored
+* Google Teachable Machine (conceptual ML exploration)
+* MediaPipe Tasks API
+* OpenCV for camera input
+  
 ## Testing and Troubleshooting
 
 Extensive testing was conducted to validate:
@@ -165,6 +227,16 @@ Extensive testing was conducted to validate:
 * Power stability under load
 * I2C communication reliability
 * Software logic correctness
+
+## Repository Guide
+```
+asl_letters.py -> creates the definitions for ASL letters, currently have servos working for letters A and B.
+continuous_movement -> create a testing environment to get the servos to move in a continuous manner
+hand_servo.py -> defined the servos and various hand positions, including the relax-hand function
+servo_test.py -> first experimentation with getting the servo to move
+test_hand.py -> testing out the movement of the hand
+testinghi.py -> although this is not relevant to this specific project, this was an experimentation with a peltier device. 
+```
 
 Each test iteration is documented in the Digital Notebook, including parameters tested, observed behavior, and resulting design decisions.
 
