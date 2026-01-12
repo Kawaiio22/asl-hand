@@ -119,6 +119,9 @@ Servo motors are used to actuate individual fingers via a tendon-driven mechanis
 * Torque sufficient for finger flexion
 * Compatibility with standard PWM control
 * Availability of documentation and testing libraries
+* ![IMG_0563](https://github.com/user-attachments/assets/3f8d6705-cc4b-41be-b1cd-b49cc1e4c1fb)
+![IMG_0624](https://github.com/user-attachments/assets/3a206db5-7d7f-47d7-9073-1372f0f55e84)
+
 
 Multiple servo models were researched and tested to evaluate consistency, jitter, and power draw.
 
