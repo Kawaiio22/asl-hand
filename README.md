@@ -238,15 +238,22 @@ Extensive testing was conducted to validate:
 * Software logic correctness
 
 ## Repository Guide
+MAIN BRANCH:
 ```
 asl_letters.py -> creates the definitions for ASL letters, currently have servos working for letters A and B.
 continuous_movement -> create a testing environment to get the servos to move in a continuous manner
 hand_servo.py -> defined the servos and various hand positions, including the relax-hand function
 servo_test.py -> first experimentation with getting the servo to move
 test_hand.py -> testing out the movement of the hand
-testinghi.py -> although this is not relevant to this specific project, this was an experimentation with a peltier device. 
+testinghi.py -> although this is not relevant to this specific project, this was an experimentation with a peltier device.
 ```
 
+MASTER BRANCH:
+```
+hand_landmarker.task -> file to create the detection for each hand
+hand_live.py -> allow for live camera input
+main.py -> includes both the picture detection and live camera input 
+```
 Each test iteration is documented in the Digital Notebook, including parameters tested, observed behavior, and resulting design decisions.
 
 
