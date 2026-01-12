@@ -113,7 +113,7 @@ While the base CAD model is open-source, the following adaptations were planned 
 * Evaluating alternative thumb configurations
 * Considering additional degrees of freedom for the thumb
 * Exploring wrist articulation as a future extension, via a Spherical Parallel Manipulator
-<img width="189" height="267" alt="image" src="https://github.com/user-attachments/assets/a667db2e-e598-4e83-b046-6b4622a8caa9" />
+<img src="https://github.com/user-attachments/assets/a667db2e-e598-4e83-b046-6b4622a8caa9" alt="image" width="100" />
 
 ### Future CAD Work
 
@@ -135,8 +135,16 @@ Servo motors are used to actuate individual fingers via a tendon-driven mechanis
 * Compatibility with standard PWM control
 * Availability of documentation and testing libraries
 
-![IMG_0563](https://github.com/user-attachments/assets/786905e5-466c-42c1-ab92-d7e924efadf6)
-![IMG_0624](https://github.com/user-attachments/assets/6372a694-0dcf-42fd-9262-0f860abca99f)
+This is the overview of how I am using the PCA9685 board.
+
+
+<img src="https://github.com/user-attachments/assets/786905e5-466c-42c1-ab92-d7e924efadf6" alt="Setup for PCA9685 Board Usage" width="400">
+
+This shows some of the measurements I did on the microservos to make adjustments to the CAD design.
+
+
+<img src="https://github.com/user-attachments/assets/6372a694-0dcf-42fd-9262-0f860abca99f" alt="Microservo Measurements" width="400">
+
 
 
 
@@ -188,7 +196,8 @@ The software component of this project focuses on:
 * Troubleshooting communication and power issues
 
 The software is developed incrementally, with isolated tests for each subsystem before integration.
-![Flowchart for Code](https://github.com/user-attachments/assets/e8d0f103-faf9-44c9-be53-3b4039a0f95c)
+<img src="https://github.com/user-attachments/assets/e8d0f103-faf9-44c9-be53-3b4039a0f95c" alt="Flowchart for Code" width="600">
+
 
 ### Servo Control
 * Python-based control logic
