@@ -149,6 +149,7 @@ The software component of this project focuses on:
 * Troubleshooting communication and power issues
 
 The software is developed incrementally, with isolated tests for each subsystem before integration.
+![Flowchart for Code](https://github.com/user-attachments/assets/e8d0f103-faf9-44c9-be53-3b4039a0f95c)
 
 
 ## Testing and Troubleshooting
