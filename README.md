@@ -3,7 +3,7 @@ Digital Electronics Final Project Kiana Lee
 
 
 ## Project Overview
-The ASL Hand Project is an ongoing engineering and research project that explores the design of a robotic hand capable of producing American Sign Language (ASL) fingerspelling.
+The ASL Hand Project is an ongoing engineering and research project that explores the design of a robotic hand capable of producing American Sign Language (ASL) fingerspelling. The project is split into two parts: a joint detection based on MediaPipe to identify ASL letters and produce a text output, and then the physical/mechanical hand, designed with servos to move individual fingers.
 
   At its current stage, the project focuses on:
 ```
